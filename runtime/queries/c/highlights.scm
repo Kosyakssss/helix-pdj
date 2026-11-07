@@ -136,10 +136,10 @@
   declarator: (type_identifier) @type.definition)
 
 (call_expression
-  function: (identifier) @function)
+  function: (identifier) @function.call)
 (call_expression
   function: (field_expression
-    field: (field_identifier) @function))
+    field: (field_identifier) @function.method.call))
 (call_expression (argument_list (identifier) @variable))
 (function_declarator
   declarator: [(identifier) (field_identifier)] @function)
@@ -207,3 +207,17 @@
    "__VA_ARGS__" "__VA_OPT__" "__cplusplus"))
 
 (comment) @comment
+
+; Definition names
+; Last, so a definition beats `(type_identifier) @type`. Only with a body: `struct Foo;`
+; and `struct Foo x;` are uses.
+
+(struct_specifier
+  name: (type_identifier) @type.definition
+  body: (_))
+(union_specifier
+  name: (type_identifier) @type.definition
+  body: (_))
+(enum_specifier
+  name: (type_identifier) @type.definition
+  body: (_))

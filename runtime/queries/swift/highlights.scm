@@ -136,10 +136,10 @@
   (simple_identifier) @variable.other.member)
 
 ; Function calls
-(call_expression (simple_identifier) @function) ; foo()
+(call_expression (simple_identifier) @function.call) ; foo()
 (call_expression ; foo.bar.baz(): highlight the baz()
   (navigation_expression
-    (navigation_suffix (simple_identifier) @function)))
+    (navigation_suffix (simple_identifier) @function.method.call)))
 ((navigation_expression
    (simple_identifier) @type) ; SomeType.method(): highlight SomeType as a type
    (#match? @type "^[A-Z]"))
@@ -221,3 +221,13 @@
 (value_pack_expansion ["repeat" @keyword])
 (type_parameter_pack ["each" @keyword])
 (type_pack_expansion ["repeat" @keyword])
+
+; Definition names
+; Last, so a definition beats `(type_identifier) @type`.
+
+(class_declaration
+  name: (type_identifier) @type.definition)
+(protocol_declaration
+  name: (type_identifier) @type.definition)
+(typealias_declaration
+  name: (type_identifier) @type.definition)

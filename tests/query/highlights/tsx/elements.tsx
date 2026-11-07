@@ -7,5 +7,5 @@ function add(a: number): number {
 const el = <Foo bar={add(2)}>hi</Foo>;
 //          ^ @constructor
 //              ^ @attribute
-//                   ^ @function
+//                   ^ @function.call
 //                               ^ @constructor

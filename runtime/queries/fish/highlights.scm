@@ -94,7 +94,7 @@
 
 ;; Commands
 
-(command name: (word) @function)
+(command name: (word) @function.call)
 
 (command
   name: (word) @function.builtin (#match? @function.builtin "^test$")

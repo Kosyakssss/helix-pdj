@@ -1,8 +1,8 @@
 func f() {
     invokeit()
-//  ^ @function
+//  ^ @function.call
     obj.doThing()
-//      ^ @function
+//      ^ @function.method.call
     _ = obj.field
 //          ^ @variable.other.member
 }

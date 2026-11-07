@@ -195,3 +195,18 @@
       (function_type)
       (union_type (parenthesized_type (function_type)))
     ]))
+
+; Definition names
+; ----------------
+; Last, so a definition beats `(type_identifier) @type`.
+
+(class_declaration
+  name: (_) @type.definition)
+(abstract_class_declaration
+  name: (_) @type.definition)
+(interface_declaration
+  name: (_) @type.definition)
+(type_alias_declaration
+  name: (_) @type.definition)
+(enum_declaration
+  name: (_) @type.definition)

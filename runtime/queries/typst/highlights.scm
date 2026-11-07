@@ -46,9 +46,13 @@
 
 ; FUNCTIONS
 (call
-  item: (ident) @function)
+  item: (ident) @function.call)
 (call
-  item: (field field: (ident) @function.method))
+  item: (field field: (ident) @function.method.call))
+; `#let name(args) = ...` defines a function.
+(let
+  pattern: (call
+    item: (ident) @function))
 (tagged field: (ident) @tag)
 (field field: (ident) @tag)
 (comment) @comment

@@ -1,2 +1,2 @@
 invokeit foo
-# ^ @function
+# ^ @function.call

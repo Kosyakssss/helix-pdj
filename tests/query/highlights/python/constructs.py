@@ -1,11 +1,11 @@
 import os
 #      ^ @namespace
 class Widget:
-#     ^ @type
+#     ^ @type.definition
     def method(self, count: int) -> bool:
 #       ^ @function
 #              ^ @variable.builtin
 #                    ^ @variable.parameter
 #                           ^ @type.builtin
         return self.helper(count)
-#                   ^ @function.method
+#                   ^ @function.method.call

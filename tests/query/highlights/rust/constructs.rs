@@ -7,7 +7,7 @@ fn f(self) {
     println!("ok");
 //  ^ @function.macro
     self.helper();
-//       ^ @function.method
+//       ^ @function.method.call
     let p = Point {};
 //          ^ @constructor
 }

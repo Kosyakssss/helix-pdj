@@ -2,5 +2,5 @@ package main
 
 func main() {
 	invokeit()
-//	^ @function
+//	^ @function.call
 }

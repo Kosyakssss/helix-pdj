@@ -1,11 +1,11 @@
 class Widget {
-//    ^ @type
+//    ^ @type.definition
     int field;
 //      ^ @variable.other.member
     bool method(int count) {
 //       ^ @function
 //                  ^ @variable.parameter
         return helper(count);
-//             ^ @function
+//             ^ @function.call
     }
 };

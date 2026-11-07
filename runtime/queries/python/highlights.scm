@@ -195,7 +195,7 @@
         (_ [(identifier) (none)]? @type)))))
 
 ; Classes
-(class_definition name: (identifier) @type)
+(class_definition name: (identifier) @type.definition)
 (class_definition superclasses: (argument_list (identifier) @type))
 
 ; -------
@@ -206,18 +206,18 @@
   name: (identifier) @function)
 
 (call
-  function: (identifier) @function)
+  function: (identifier) @function.call)
 
 ; Decorators
-(decorator) @function
-(decorator (identifier) @function)
-(decorator (attribute attribute: (identifier) @function))
+(decorator) @function.call
+(decorator (identifier) @function.call)
+(decorator (attribute attribute: (identifier) @function.call))
 (decorator (call
-  function: (attribute attribute: (identifier) @function)))
+  function: (attribute attribute: (identifier) @function.call)))
 
 ; Methods
 (call
-  function: (attribute attribute: (identifier) @function.method))
+  function: (attribute attribute: (identifier) @function.method.call))
 
 ; Builtin functions
 ((call

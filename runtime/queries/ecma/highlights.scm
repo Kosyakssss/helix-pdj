@@ -206,14 +206,14 @@
 ;--------------------------
 
 (call_expression
-  function: (identifier) @function)
+  function: (identifier) @function.call)
 
 (call_expression
   function: (member_expression
-    property: (property_identifier) @function.method))
+    property: (property_identifier) @function.method.call))
 (call_expression
   function: (member_expression
-    property: (private_property_identifier) @function.method.private))
+    property: (private_property_identifier) @function.method.call))
 
 ; Literals
 ;---------
@@ -339,3 +339,17 @@
 
 (namespace_import (identifier) @namespace)
 (namespace_export (identifier) @namespace)
+
+; Definition names
+;-----------------
+; Last, so a definition beats the capitalized-identifier guess above.
+
+(function_declaration
+  name: (identifier) @function)
+(variable_declarator
+  name: (identifier) @function
+  value: [(function_expression) (arrow_function)])
+(class_declaration
+  name: (_) @type.definition)
+(class
+  name: (_) @type.definition)

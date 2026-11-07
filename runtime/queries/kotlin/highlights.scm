@@ -199,18 +199,18 @@
 
 ; generic function call (e.g. foo())
 (call_expression
-	. (simple_identifier) @function)
+	. (simple_identifier) @function.call)
 
 ; method call via navigation (e.g. obj.method())
 (call_expression
 	(navigation_expression
 		(navigation_suffix
-			(simple_identifier) @function) . ))
+			(simple_identifier) @function.method.call) . ))
 
 ; infix function call (e.g. 1 to 2)
 (infix_expression
   . (_) .
-	(simple_identifier) @function)
+	(simple_identifier) @function.call)
 
 ; builtin function calls
 (call_expression
@@ -279,9 +279,9 @@
 
 (import_header
 	(identifier
-		(simple_identifier) @function @_import .)
+		(simple_identifier) @function.call @_import .)
 	(import_alias
-		(type_identifier) @function)?
+		(type_identifier) @function.call)?
 		(#match? @_import "^[a-z]"))
 
 ; The last `simple_identifier` in a `import_header` will always either be a function
@@ -327,3 +327,13 @@
 
 ; `this` this keyword inside classes
 (this_expression) @variable.builtin
+
+; Definition names
+; Last, so a definition beats `(type_identifier) @type`.
+
+(class_declaration
+  (type_identifier) @type.definition)
+(object_declaration
+  (type_identifier) @type.definition)
+(type_alias
+  (type_identifier) @type.definition)

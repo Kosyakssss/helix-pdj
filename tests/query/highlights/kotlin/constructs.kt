@@ -3,5 +3,5 @@ fun method(count: Int): Boolean {
 //         ^ @variable.parameter
 //                 ^ @type.builtin
     return helper(count)
-//         ^ @function
+//         ^ @function.call
 }

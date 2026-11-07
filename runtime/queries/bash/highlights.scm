@@ -161,7 +161,7 @@
   name: (word) @function)
 
 (command_name
-  (word) @function)
+  (word) @function.call)
 
 (command_name
   (word) @function.builtin

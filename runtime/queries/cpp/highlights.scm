@@ -37,28 +37,28 @@
 ; i.e. a::b::c::d::func();
 (call_expression
   function: (qualified_identifier
-    name: (identifier) @function))
+    name: (identifier) @function.call))
 (call_expression
   function: (qualified_identifier
     name: (qualified_identifier
-      name: (identifier) @function)))
+      name: (identifier) @function.call)))
 (call_expression
   function: (qualified_identifier
     name: (qualified_identifier
       name: (qualified_identifier
-        name: (identifier) @function))))
+        name: (identifier) @function.call))))
 (call_expression
   function: (qualified_identifier
     name: (qualified_identifier
       name: (qualified_identifier
         name: (qualified_identifier
-          name: (identifier) @function)))))
+          name: (identifier) @function.call)))))
 
 (template_function
-  name: (identifier) @function)
+  name: (identifier) @function.call)
 
 (template_method
-  name: (field_identifier) @function)
+  name: (field_identifier) @function.method.call)
 
 ; Support up to 4 levels of nesting of qualifiers
 ; i.e. a::b::c::d::func();
@@ -191,3 +191,10 @@
 ; Strings
 
 (raw_string_literal) @string
+
+; Definition names
+; Last, so a definition beats `(type_identifier) @type`. Only with a body.
+
+(class_specifier
+  name: (type_identifier) @type.definition
+  body: (_))

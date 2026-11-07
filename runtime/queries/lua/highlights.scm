@@ -187,13 +187,15 @@
 ;; Property
 (dot_index_expression field: (identifier) @variable.other.member)
 
+(method_index_expression method: (identifier) @function.method)
+
 (function_call
   name: [
-    (identifier) @function
+    (identifier) @function.call
     (dot_index_expression
-      field: (identifier) @function)
+      field: (identifier) @function.call)
     (method_index_expression
-      method: (identifier) @function.method)
+      method: (identifier) @function.method.call)
   ])
 
 ; TODO: incorrectly highlights variable N in `N, nop = 42, function() end`
@@ -203,7 +205,6 @@
     (expression_list
       value: (function_definition)))
 
-(method_index_expression method: (identifier) @function.method)
 
 ;; Nodes
 (comment) @comment

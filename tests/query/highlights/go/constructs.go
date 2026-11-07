@@ -8,5 +8,5 @@ func (p Point) Dist(count int) bool {
 //             ^ @function.method.public
 //                  ^ @variable.parameter
     return helper(count)
-//         ^ @function
+//         ^ @function.call
 }
